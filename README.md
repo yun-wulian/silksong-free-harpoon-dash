@@ -1,6 +1,6 @@
 # Free Harpoon Dash
 
-A BepInEx 6 plugin for the Unity Mono build of Hollow Knight: Silksong.
+A BepInEx 5.4.23.4 plugin for the Unity Mono build of Hollow Knight: Silksong.
 
 This targets the horizontal needle movement ability implemented by the game's `Harpoon Dash` PlayMaker FSM:
 

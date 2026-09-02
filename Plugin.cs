@@ -1,7 +1,6 @@
 using System;
 using System.Reflection;
 using BepInEx;
-using BepInEx.Unity.Mono;
 using HarmonyLib;
 using HutongGames.PlayMaker.Actions;
 
@@ -12,7 +11,7 @@ public sealed class Plugin : BaseUnityPlugin
 {
     public const string PluginGuid = "modcraft.silksong.free-harpoon-dash";
     public const string PluginName = "Free Harpoon Dash";
-    public const string PluginVersion = "1.0.0";
+    public const string PluginVersion = "1.0.1";
 
     private void Awake()
     {
