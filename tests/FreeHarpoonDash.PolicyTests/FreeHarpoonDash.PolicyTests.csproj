@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>FreeHarpoonDash.PolicyTests</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\DashPosePolicy.cs" Link="DashPosePolicy.cs" />
+    <Compile Include="..\..\DebugUnlockPolicy.cs" Link="DebugUnlockPolicy.cs" />
+    <Compile Include="..\..\TerrainCollisionPolicy.cs" Link="TerrainCollisionPolicy.cs" />
+    <Compile Include="..\..\HarpoonDirectionPolicy.cs" Link="HarpoonDirectionPolicy.cs" />
+  </ItemGroup>
+</Project>

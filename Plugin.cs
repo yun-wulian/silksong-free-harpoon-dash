@@ -1,6 +1,7 @@
 using System;
 using System.Reflection;
 using BepInEx;
+using BepInEx.Configuration;
 using HarmonyLib;
 using HutongGames.PlayMaker.Actions;
 
@@ -11,12 +12,34 @@ public sealed class Plugin : BaseUnityPlugin
 {
     public const string PluginGuid = "modcraft.silksong.free-harpoon-dash";
     public const string PluginName = "Free Harpoon Dash";
-    public const string PluginVersion = "1.0.1";
+    public const string PluginVersion = "1.4.0";
+
+    internal static ConfigEntry<bool> DebugUnlockHarpoonDash { get; private set; } = null!;
 
     private void Awake()
     {
+        DebugUnlockHarpoonDash = Config.Bind(
+            "Debug",
+            "UnlockHarpoonDashBeforeStory",
+            false,
+            "Temporarily unlock Harpoon Dash before its story unlock. This never changes the saved PlayerData unlock flag, so disabling it restores the story-controlled availability.");
+
         new Harmony(PluginGuid).PatchAll(Assembly.GetExecutingAssembly());
-        Logger.LogInfo($"{PluginName} {PluginVersion} loaded: Harpoon Dash works at zero silk and consumes no silk.");
+        Logger.LogInfo(
+            $"{PluginName} {PluginVersion} loaded: free silk cost and eight-direction aiming are enabled; " +
+            $"debug unlock={DebugUnlockHarpoonDash.Value}.");
+    }
+
+}
+
+[HarmonyPatch(typeof(HeroController), nameof(HeroController.HasHarpoonDash))]
+internal static class DebugHarpoonDashUnlockPatch
+{
+    private static void Postfix(ref bool __result)
+    {
+        __result = DebugUnlockPolicy.Resolve(
+            __result,
+            Plugin.DebugUnlockHarpoonDash.Value);
     }
 }
 

@@ -2,10 +2,12 @@
   <PropertyGroup>
     <AssemblyName>FreeHarpoonDash</AssemblyName>
     <RootNamespace>FreeHarpoonDash</RootNamespace>
-    <Version>1.0.1</Version>
+    <Version>1.4.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="tests\**\*.cs" />
+
     <Reference Include="0Harmony">
       <HintPath>$(BepInExCoreDir)0Harmony.dll</HintPath>
       <Private>false</Private>
@@ -24,6 +26,10 @@
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>$(GameManagedDir)UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>$(GameManagedDir)UnityEngine.Physics2DModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine">
